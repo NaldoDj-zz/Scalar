@@ -1,0 +1,1 @@
+NDMenu.OnSectionLoaded("classes.js",[[1,"Scalar Array","Scalar_Array"],[1,"Scalar Character","Scalar_Character"],[1,"Scalar Date","Scalar_Date"],[1,"Scalar Hash","Scalar_Hash"],[1,"Scalar Logical","Scalar_Logical"],[1,"Scalar Nil","Scalar_Nil"],[1,"Scalar Numeric","Scalar_Numeric"],[1,"Scalar TimeStamp","Scalar_TimeStamp"]]);

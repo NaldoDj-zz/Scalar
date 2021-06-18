@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("low",["Function"],[["Lower",,[["Scalar Character",,,,0,"File:Character.prg:Scalar_Character.Lower","HarbourClass:Scalar_Character:Lower"]]]]);

@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("len",["Function"],[["Len",,[["Scalar Array",,,,0,"File:Array.prg:Scalar_Array.Len","HarbourClass:Scalar_Array:Len"],["Scalar Hash",,,,0,"File:Hash.prg:Scalar_Hash.Len","HarbourClass:Scalar_Hash:Len"]]]]);

@@ -1,0 +1,14 @@
+-inc
+-warn=max
+
+#PRGs
+prueba.prg
+
+#clases
+.\clases\*.prg
+
+#Tests
+.\hbunit\*.prg
+
+#Scalar
+.\Scalar\*.prg

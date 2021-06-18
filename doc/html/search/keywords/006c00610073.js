@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("las",["Function"],[["LastDayOfYear",,[["Scalar Date",,,,0,"File:Date.prg:Scalar_Date.LastDayOfYear","HarbourClass:Scalar_Date:LastDayOfYear"]]]]);

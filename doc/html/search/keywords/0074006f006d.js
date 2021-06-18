@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("tom",["Function"],[["Tomorrow",,[["Scalar Date",,,,0,"File:Date.prg:Scalar_Date.Tomorrow","HarbourClass:Scalar_Date:Tomorrow"]]]]);

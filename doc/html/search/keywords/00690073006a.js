@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("isj",["Function"],[["IsJsonEmpty",,[["Scalar Character",,,,0,"File:Character.prg:Scalar_Character.IsJsonEmpty","HarbourClass:Scalar_Character:IsJsonEmpty"]]],["IsJsonValid",,[["Scalar Character",,,,0,"File:Character.prg:Scalar_Character.IsJsonValid","HarbourClass:Scalar_Character:IsJsonValid"]]]]);

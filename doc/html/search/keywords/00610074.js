@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("at",["Function"],[["At",,[["Scalar Character",,,,0,"File:Character.prg:Scalar_Character.At","HarbourClass:Scalar_Character:At"]]]]);

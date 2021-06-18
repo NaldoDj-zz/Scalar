@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("tra",["Function"],[["Transpose",,[["Scalar Array",,,,0,"File:Array.prg:Scalar_Array.Transpose","HarbourClass:Scalar_Array:Transpose"]]]]);

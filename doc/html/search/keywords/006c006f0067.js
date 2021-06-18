@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("log",["Class"],[["Logical",,[[,"Scalar Logical",,,0,"File:Logical.prg:Scalar_Logical","HarbourClass:Scalar_Logical"]]]]);

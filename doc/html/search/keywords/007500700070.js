@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("upp",["Function"],[["Upper",,[["Scalar Hash","upper",,,0,"File:Hash.prg:Scalar_Hash.upper","HarbourClass:Scalar_Hash:upper"],["Scalar Character",,,,0,"File:Character.prg:Scalar_Character.Upper","HarbourClass:Scalar_Character:Upper"]]]]);

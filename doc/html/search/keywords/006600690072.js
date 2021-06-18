@@ -1,0 +1,1 @@
+NDSearch.OnPrefixDataLoaded("fir",["Function"],[["FirstDayOfYear",,[["Scalar Date",,,,0,"File:Date.prg:Scalar_Date.FirstDayOfYear","HarbourClass:Scalar_Date:FirstDayOfYear"]]]]);
