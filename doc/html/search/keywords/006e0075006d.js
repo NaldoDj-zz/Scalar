@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("num",["Class"],[["Numeric",,[[,"Scalar Numeric",,,0,"File:Numeric.prg:Scalar_Numeric","HarbourClass:Scalar_Numeric"]]]]);

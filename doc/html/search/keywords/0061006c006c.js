@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("all",["Function"],[["Alltrim",,[["Scalar Character",,,,0,"File:Character.prg:Scalar_Character.Alltrim","HarbourClass:Scalar_Character:Alltrim"]]]]);

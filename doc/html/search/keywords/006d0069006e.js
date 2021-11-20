@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("min",["Function"],[["Minute",,[["Scalar TimeStamp",,,,0,"File:TimeStamp.prg:Scalar_TimeStamp.Minute","HarbourClass:Scalar_TimeStamp:Minute"]]]]);

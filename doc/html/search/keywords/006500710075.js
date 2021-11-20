@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("equ",["Function"],[["Equal",,[["Scalar Array",,,,0,"File:Array.prg:Scalar_Array.Equal","HarbourClass:Scalar_Array:Equal"]]]]);

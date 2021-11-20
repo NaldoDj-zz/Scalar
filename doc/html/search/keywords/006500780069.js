@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("exi",["Function"],[["Exist",,[["Scalar Array",,,,0,"File:Array.prg:Scalar_Array.Exist","HarbourClass:Scalar_Array:Exist"]]]]);

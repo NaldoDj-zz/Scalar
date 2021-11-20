@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("day",["Function"],[["Day",,[["Scalar Date",,,,0,"File:Date.prg:Scalar_Date.Day","HarbourClass:Scalar_Date:Day"],["Scalar TimeStamp",,,,0,"File:TimeStamp.prg:Scalar_TimeStamp.Day","HarbourClass:Scalar_TimeStamp:Day"]]]]);

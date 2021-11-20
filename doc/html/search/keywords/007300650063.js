@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("sec",["Function"],[["Sec",,[["Scalar TimeStamp",,,,0,"File:TimeStamp.prg:Scalar_TimeStamp.Sec","HarbourClass:Scalar_TimeStamp:Sec"]]]]);

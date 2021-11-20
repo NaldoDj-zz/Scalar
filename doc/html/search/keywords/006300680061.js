@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("cha",["Class"],[["Character",,[[,"Scalar Character",,,0,"File:Character.prg:Scalar_Character","HarbourClass:Scalar_Character"]]]]);

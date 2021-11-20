@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("yea",["Function"],[["Year",,[["Scalar Date",,,,0,"File:Date.prg:Scalar_Date.Year","HarbourClass:Scalar_Date:Year"],["Scalar TimeStamp",,,,0,"File:TimeStamp.prg:Scalar_TimeStamp.Year","HarbourClass:Scalar_TimeStamp:Year"]]]]);

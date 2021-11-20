@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("lef",["Function"],[["Left",,[["Scalar Character",,,,0,"File:Character.prg:Scalar_Character.Left","HarbourClass:Scalar_Character:Left"]]],["LeftDeleteUntil",,[["Scalar Character",,,,0,"File:Character.prg:Scalar_Character.LeftDeleteUntil","HarbourClass:Scalar_Character:LeftDeleteUntil"]]]]);

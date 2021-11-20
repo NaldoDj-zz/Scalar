@@ -1,1 +1,0 @@
-NDMenu.OnSectionLoaded("files.js",[[1,"Array.prg"],[1,"Character.prg"],[1,"Date.prg"],[1,"Hash.prg"],[1,"Logical.prg"],[1,"Nil.prg"],[1,"Numeric.prg"],[1,"TimeStamp.prg"]]);

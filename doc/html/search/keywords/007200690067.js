@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("rig",["Function"],[["Right",,[["Scalar Character",,,,0,"File:Character.prg:Scalar_Character.Right","HarbourClass:Scalar_Character:Right"]]]]);

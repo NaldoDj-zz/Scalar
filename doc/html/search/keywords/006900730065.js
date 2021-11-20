@@ -1,1 +1,0 @@
-NDSearch.OnPrefixDataLoaded("ise",["Function"],[["IsEmpty",,[["Scalar Date",,,,0,"File:Date.prg:Scalar_Date.IsEmpty","HarbourClass:Scalar_Date:IsEmpty"]]],["IsEmtpy",,[["Scalar Character",,,,0,"File:Character.prg:Scalar_Character.IsEmtpy","HarbourClass:Scalar_Character:IsEmtpy"]]]]);
