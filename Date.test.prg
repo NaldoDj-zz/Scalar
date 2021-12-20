@@ -1,5 +1,5 @@
 #include 'hbclass.ch'
-#INCLUDE 'test.ch'
+#include 'test.ch'
 #include 'date.inc'
 
 CLASS Test_Date FROM TestCase
@@ -14,8 +14,8 @@ CLASS Test_Date FROM TestCase
         METHOD Test_Day()
         METHOD Test_AddDay( nDaysToAdd )
         METHOD Test_SubDay( nDaysToSubstract )
-        METHOD Test_Tomorrow() 
-        METHOD Test_Yesterday() 
+        METHOD Test_Tomorrow()
+        METHOD Test_Yesterday()
         METHOD Test_DiffDays( dDate )
         METHOD Test_AddWeek( nWeeksToAdd )
         METHOD Test_SubWeek( nWeeksToSubstract )
@@ -25,6 +25,33 @@ CLASS Test_Date FROM TestCase
         METHOD Test_StrFormat()
         METHOD Test_IsEmpty()
         METHOD Test_NotEmpty()
+
+
+        METHOD Test_StrDay()
+        METHOD Test_StrMonth()
+        METHOD Test_StrYear()
+
+        METHOD Test_StrYearMonth()
+
+        METHOD Test_AddMonth( nMonth )
+        METHOD Test_SubMonth( nMonth )
+
+        METHOD Test_AddYear( nYear )
+        METHOD Test_SubYear( nYear )
+
+        METHOD Test_DateDiffDay( dDate )
+        METHOD Test_DateDiffMonth( dDate )
+        METHOD Test_DateDiffYear( dDate )
+
+        METHOD Test_DateDiffYMD( dDate )
+
+        METHOD Test_LastDayOfMonth()
+
+        METHOD Test_FirstDateOfMonth()
+        METHOD Test_LastDateOfMonth()
+
+        METHOD Test_FirstDateOfYear()
+        METHOD Test_LastDateOfYear()
 
 END CLASS
 
@@ -86,7 +113,7 @@ METHOD Test_Tomorrow( ) CLASS Test_Date
 
     ::Assert():Equals( 0d20200102, 0d20200101:Tomorrow( ), 'Test Date:Tomorrow()' )
 
-Return ( Nil )    
+Return ( Nil )
 
 
 
@@ -94,7 +121,7 @@ METHOD Test_Yesterday() CLASS Test_Date
 
     ::Assert():Equals( 0d20191231, 0d20200101:Yesterday( ), 'Test Date:Yesterday()' )
 
-Return ( Nil )    
+Return ( Nil )
 
 
 METHOD Test_DiffDays() CLASS Test_Date
@@ -188,4 +215,84 @@ METHOD Test_NotEmpty() CLASS Test_Date
     ::Assert():False( cTod(''):NotEmpty() )
     ::Assert():True( cTod('01/01/2020'):NotEmpty() )
 
+Return ( Nil )
+
+METHOD Test_StrDay() CLASS Test_Date
+
+    ::Assert():Equals( '15', 0d19701215:StrDay() )
+
+Return ( Nil )
+
+METHOD Test_StrMonth() CLASS Test_Date
+    ::Assert():Equals( '12', 0d19701215:StrMonth() )
+Return ( Nil )
+
+METHOD Test_StrYear() CLASS Test_Date
+    ::Assert():Equals( '1970', 0d19701215:StrYear() )
+Return ( Nil )
+
+METHOD Test_StrYearMonth() CLASS Test_Date
+    ::Assert():Equals( '197012', 0d19701215:StrYearMonth() )
+Return ( Nil )
+
+METHOD Test_AddMonth( nMonth ) CLASS Test_Date
+    ::Assert():Equals( 0d19710115, 0d19701215:AddMonth() )
+Return ( Nil )
+
+METHOD Test_SubMonth( nMonth ) CLASS Test_Date
+    ::Assert():Equals( 0d19701115, 0d19701215:SubMonth() )
+Return ( Nil )
+
+METHOD Test_AddYear( nYear ) CLASS Test_Date
+    ::Assert():Equals( 0d19711215, 0d19701215:AddYear() )
+Return ( Nil )
+
+METHOD Test_SubYear( nYear ) CLASS Test_Date
+    ::Assert():Equals( 0d19691215, 0d19701215:AddYear() )
+Return ( Nil )
+
+METHOD Test_DateDiffDay( dDate ) CLASS Test_Date
+    ::Assert():Equals( 1 , 0d19701215:DateDiffDay() )
+    ::Assert():Equals( 2 , 0d19701215:DateDiffDay(2) )
+Return ( Nil )
+
+METHOD Test_DateDiffMonth( dDate ) CLASS Test_Date
+    ::Assert():Equals( 1, 0d19701215:DateDiffMonth() )
+    ::Assert():Equals( 2, 0d19701215:DateDiffMonth(2) )
+Return ( Nil )
+
+METHOD Test_DateDiffYear( dDate ) CLASS Test_Date
+    ::Assert():Equals( 1, 0d19701215:DateDiffYear() )
+    ::Assert():Equals( 2, 0d19701215:DateDiffYear(2) )
+Return ( Nil )
+
+METHOD Test_DateDiffYMD( dDate ) CLASS Test_Date
+    ::Assert():Equals( {"years"=>0,"months"=>0,"days"=>0}, 0d19701215:DateDiffYMD(0d19701215) )
+    ::Assert():Equals( {"years"=>0,"months"=>1,"days"=>0}, 0d19701215:DateDiffYMD(0d19701115) )
+    ::Assert():Equals( {"years"=>1,"months"=>0,"days"=>0}, 0d19701215:DateDiffYMD(0d19711215) )
+    ::Assert():Equals( {"years"=>1,"months"=>1,"days"=>0}, 0d19701215:DateDiffYMD(0d19711115) )
+Return ( Nil )
+
+METHOD Test_LastDayOfMonth() CLASS Test_Date
+    ::Assert():Equals( 30, 0d19701115:LastDayOfMonth() )
+    ::Assert():Equals( 31, 0d19701215:LastDayOfMonth() )
+Return ( Nil )
+
+METHOD Test_FirstDateOfMonth() CLASS Test_Date
+    ::Assert():Equals( 0d19701201, 0d19701215:FirstDateOfMonth() )
+Return ( Nil )
+
+METHOD Test_LastDateOfMonth() CLASS Test_Date
+    ::Assert():Equals( 0d19701130, 0d19701115:LastDateOfMonth() )
+    ::Assert():Equals( 0d19701231, 0d19701215:LastDateOfMonth() )
+Return ( Nil )
+
+METHOD Test_FirstDateOfYear() CLASS Test_Date
+    ::Assert():Equals( 0d19700101, 0d19701115:FirstDateOfYear() )
+    ::Assert():Equals( 0d19700101, 0d19701215:FirstDateOfYear() )
+Return ( Nil )
+
+METHOD Test_LastDateOfYear() CLASS Test_Date
+    ::Assert():Equals( 0d19701231, 0d19701115:LastDateOfYear() )
+    ::Assert():Equals( 0d19701231, 0d19701215:LastDateOfYear() )
 Return ( Nil )
