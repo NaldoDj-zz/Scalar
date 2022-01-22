@@ -26,24 +26,25 @@ CLASS Test_Date FROM TestCase
         METHOD Test_IsEmpty()
         METHOD Test_NotEmpty()
 
-
+        METHOD Test_DTos()
+        
         METHOD Test_StrDay()
         METHOD Test_StrMonth()
         METHOD Test_StrYear()
 
         METHOD Test_StrYearMonth()
 
-        METHOD Test_AddMonth( nMonth )
-        METHOD Test_SubMonth( nMonth )
+        METHOD Test_AddMonth()
+        METHOD Test_SubMonth()
 
-        METHOD Test_AddYear( nYear )
-        METHOD Test_SubYear( nYear )
+        METHOD Test_AddYear()
+        METHOD Test_SubYear()
 
-        METHOD Test_DateDiffDay( dDate )
-        METHOD Test_DateDiffMonth( dDate )
-        METHOD Test_DateDiffYear( dDate )
+        METHOD Test_DateDiffDay()
+        METHOD Test_DateDiffMonth()
+        METHOD Test_DateDiffYear()
 
-        METHOD Test_DateDiffYMD( dDate )
+        METHOD Test_DateDiffYMD()
 
         METHOD Test_LastDayOfMonth()
 
@@ -217,80 +218,262 @@ METHOD Test_NotEmpty() CLASS Test_Date
 
 Return ( Nil )
 
+
+
+METHOD Test_DTos() CLASS Test_Date
+
+    ::Assert():Equals( '19701215', 0d19701215:DToS() )
+
+Return ( Nil )
+
+
+
 METHOD Test_StrDay() CLASS Test_Date
 
     ::Assert():Equals( '15', 0d19701215:StrDay() )
 
 Return ( Nil )
 
+
+
 METHOD Test_StrMonth() CLASS Test_Date
     ::Assert():Equals( '12', 0d19701215:StrMonth() )
 Return ( Nil )
+
+
 
 METHOD Test_StrYear() CLASS Test_Date
     ::Assert():Equals( '1970', 0d19701215:StrYear() )
 Return ( Nil )
 
+
+
 METHOD Test_StrYearMonth() CLASS Test_Date
     ::Assert():Equals( '197012', 0d19701215:StrYearMonth() )
 Return ( Nil )
 
-METHOD Test_AddMonth( nMonth ) CLASS Test_Date
-    ::Assert():Equals( 0d19710115, 0d19701215:AddMonth() )
+
+
+METHOD Test_AddMonth() CLASS Test_Date
+
+    local aResults
+    
+    local nMonth 
+    local nMonths
+    
+    aResults:=array(0)
+    aAdd(aResults,0d19701215)
+    aAdd(aResults,0d19711215)
+    aAdd(aResults,0d19721215)
+    aAdd(aResults,0d19731215)
+    
+    nMonths:=36
+    for nMonth:=0 to nMonths step 12
+        ::Assert():Equals( aResults[nMonth], 0d19701215:AddMonth(nMonth) )
+    next nMonth
+
 Return ( Nil )
 
-METHOD Test_SubMonth( nMonth ) CLASS Test_Date
-    ::Assert():Equals( 0d19701115, 0d19701215:SubMonth() )
+
+
+METHOD Test_SubMonth() CLASS Test_Date
+
+    local aResults
+    
+    local nMonth 
+    local nMonths
+    
+    aResults:=array(0)
+    aAdd(aResults,0d19701215)
+    aAdd(aResults,0d19691215)
+    aAdd(aResults,0d19681215)
+    aAdd(aResults,0d19671215)
+    
+    nMonths:=36
+    for nMonth:=0 to nMonths step 12
+        ::Assert():Equals( aResults[nMonth], 0d19701215:SubMonth(nMonth) )
+    next nMonth
+
 Return ( Nil )
 
-METHOD Test_AddYear( nYear ) CLASS Test_Date
-    ::Assert():Equals( 0d19711215, 0d19701215:AddYear() )
+
+
+METHOD Test_AddYear() CLASS Test_Date
+
+    local aResults
+    
+    local nYear
+    local nYears
+    
+    aResults:=array(0)
+    aAdd(aResults,0d19701215)
+    aAdd(aResults,0d19821215)
+    aAdd(aResults,0d19941215)
+    aAdd(aResults,0d20061215)
+    
+    nYears:=36
+    for nYear:=0 to nYears step 12
+        ::Assert():Equals( aResults[nYear], 0d19701215:AddYear(nYear) )
+    next nYear
+
 Return ( Nil )
 
-METHOD Test_SubYear( nYear ) CLASS Test_Date
-    ::Assert():Equals( 0d19691215, 0d19701215:AddYear() )
+
+
+METHOD Test_SubYear() CLASS Test_Date
+
+    local aResults
+    
+    local nYear
+    local nYears
+    
+    aResults:=array(0)
+    aAdd(aResults,0d19701215)
+    aAdd(aResults,0d19581215)
+    aAdd(aResults,0d19461215)
+    aAdd(aResults,0d19341215)
+    
+    nYears:=36
+    for nYear:=0 to nYears step 12
+        ::Assert():Equals( aResults[nYear], 0d19701215:SubYear(nYear) )
+    next nYear
+
 Return ( Nil )
 
-METHOD Test_DateDiffDay( dDate ) CLASS Test_Date
-    ::Assert():Equals( 1 , 0d19701215:DateDiffDay() )
-    ::Assert():Equals( 2 , 0d19701215:DateDiffDay(2) )
+
+
+METHOD Test_DateDiffDay() CLASS Test_Date
+
+    local aResults
+    
+    local nDay
+    local nDays
+
+    aResults:=array(0)
+    aAdd(aResults,0)
+    aAdd(aResults,12)
+    aAdd(aResults,24)
+    aAdd(aResults,36)
+
+    nDays:=36
+    for nDay :=0 to nDays step 12
+       ::Assert():Equals( 2 , 0d19701215:DateDiffDay(0d19701215:AddDay(nDay) )
+    next nDay
+
 Return ( Nil )
 
-METHOD Test_DateDiffMonth( dDate ) CLASS Test_Date
-    ::Assert():Equals( 1, 0d19701215:DateDiffMonth() )
-    ::Assert():Equals( 2, 0d19701215:DateDiffMonth(2) )
+
+
+METHOD Test_DateDiffMonth() CLASS Test_Date
+
+    local aResults
+    
+    local nMonth
+    local nMonths
+
+    aResults:=array(0)
+    aAdd(aResults,0)
+    aAdd(aResults,12)
+    aAdd(aResults,24)
+    aAdd(aResults,36)
+
+    nMonths:=36
+    for nMonth :=0 to nMonths step 12
+       ::Assert():Equals( aResults[nMonth] , 0d19701215:DateDiffMonth(0d19701215:AddMonth(nMonth)) )
+    next nMonth
+
 Return ( Nil )
 
-METHOD Test_DateDiffYear( dDate ) CLASS Test_Date
-    ::Assert():Equals( 1, 0d19701215:DateDiffYear() )
-    ::Assert():Equals( 2, 0d19701215:DateDiffYear(2) )
+
+
+METHOD Test_DateDiffYear() CLASS Test_Date
+
+    local aResults
+    
+    local nYear
+    local nYears
+
+    aResults:=array(0)
+    aAdd(aResults,0)
+    aAdd(aResults,12)
+    aAdd(aResults,24)
+    aAdd(aResults,36)
+
+    nYears:=36
+    for nYear :=0 to nYears step 12
+       ::Assert():Equals( aResults[nYear] , 0d19701215:DateDiffYear(0d19701215:AddYear(nYear)) )
+    next nYear
+
 Return ( Nil )
+
+
 
 METHOD Test_DateDiffYMD( dDate ) CLASS Test_Date
-    ::Assert():Equals( {"years"=>0,"months"=>0,"days"=>0}, 0d19701215:DateDiffYMD(0d19701215) )
-    ::Assert():Equals( {"years"=>0,"months"=>1,"days"=>0}, 0d19701215:DateDiffYMD(0d19701115) )
-    ::Assert():Equals( {"years"=>1,"months"=>0,"days"=>0}, 0d19701215:DateDiffYMD(0d19711215) )
-    ::Assert():Equals( {"years"=>1,"months"=>1,"days"=>0}, 0d19701215:DateDiffYMD(0d19711115) )
+
+    local aResults 
+    
+    local nYear
+    local nYears
+
+    ::Assert():Equals( 0, 0d19701215:DateDiffYMD(0d19701215)["years"] )
+    ::Assert():Equals( 0, 0d19701215:DateDiffYMD(0d19701115)["months"] )
+    ::Assert():Equals( 0, 0d19701215:DateDiffYMD(0d19711215)["days"] )    
+
+    ::Assert():Equals( 50, 0d19701215:DateDiffYMD(0d20201215)["years"] )
+    ::Assert():Equals( 0, 0d19701215:DateDiffYMD(0d20201215)["months"] )
+    ::Assert():Equals( 0, 0d19701215:DateDiffYMD(0d20201215)["days"] )    
+
+    ::Assert():Equals( 49, 0d19701215:DateDiffYMD(0d20201115)["years"] )
+    ::Assert():Equals( 11, 0d19701215:DateDiffYMD(0d20201115)["months"] )
+    ::Assert():Equals( 0, 0d19701215:DateDiffYMD(0d20201115)["days"] )    
+
+    ::Assert():Equals( 49, 0d19701215:DateDiffYMD(0d20201130)["years"] )
+    ::Assert():Equals( 11, 0d19701215:DateDiffYMD(0d20201130)["months"] )
+    ::Assert():Equals( 15, 0d19701215:DateDiffYMD(0d20201130)["days"] )   
+
+    aResults:=array(0)
+    aAdd(aResults,{0,0,0})
+    aAdd(aResults,{12,0,0})
+    aAdd(aResults,{24,0,0})
+    aAdd(aResults,{36,0,0})
+
+    nYears:=36
+    for nYear :=0 to nYears step 12
+       ::Assert():Equals( aResults[nYear][1] , 0d19701215:DateDiffYMD(0d19701215:AddYear(nYear))["years"] )
+       ::Assert():Equals( aResults[nYear][2] , 0d19701215:DateDiffYMD(0d19701215:AddYear(nYear))["months"] )
+       ::Assert():Equals( aResults[nYear][3] , 0d19701215:DateDiffYMD(0d19701215:AddYear(nYear))["days"] )
+    next nYear
+
 Return ( Nil )
+
+
 
 METHOD Test_LastDayOfMonth() CLASS Test_Date
     ::Assert():Equals( 30, 0d19701115:LastDayOfMonth() )
     ::Assert():Equals( 31, 0d19701215:LastDayOfMonth() )
 Return ( Nil )
 
+
+
 METHOD Test_FirstDateOfMonth() CLASS Test_Date
     ::Assert():Equals( 0d19701201, 0d19701215:FirstDateOfMonth() )
 Return ( Nil )
+
+
 
 METHOD Test_LastDateOfMonth() CLASS Test_Date
     ::Assert():Equals( 0d19701130, 0d19701115:LastDateOfMonth() )
     ::Assert():Equals( 0d19701231, 0d19701215:LastDateOfMonth() )
 Return ( Nil )
 
+
+
 METHOD Test_FirstDateOfYear() CLASS Test_Date
     ::Assert():Equals( 0d19700101, 0d19701115:FirstDateOfYear() )
     ::Assert():Equals( 0d19700101, 0d19701215:FirstDateOfYear() )
 Return ( Nil )
+
+
 
 METHOD Test_LastDateOfYear() CLASS Test_Date
     ::Assert():Equals( 0d19701231, 0d19701115:LastDateOfYear() )

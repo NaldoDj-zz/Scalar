@@ -26,6 +26,8 @@ CREATE CLASS Date INHERIT HBScalar FUNCTION HBDate
         METHOD StrSqlQuoted()
         METHOD IsEmpty()
         METHOD NotEmpty()
+        
+        METHOD DToS()
 
         METHOD StrDay()
         METHOD StrMonth()
@@ -73,7 +75,8 @@ Devuelve:
     Fecha
 */
 METHOD FirstDayOfYear() CLASS Date
-RETURN Ctod ( '01/01/' + ::Year():Strint() )
+    local cDate:=::Year():Strint()+"0101"
+RETURN SToD(cDate)
 
 /* METHOD: LastDayOfYear()
     Método que devuelve el último día del año
@@ -82,7 +85,8 @@ Devuelve:
     Fecha
 */
 METHOD LastDayOfYear() CLASS Date
-RETURN Ctod ( '31/12/' + ::Year():Strint() )
+    cDate:=::Year():Strint()+"1231"
+RETURN SToD(cDate)
 
 /* METHOD: Month()
     Método que devuelve el número de mes del dato
@@ -313,6 +317,15 @@ METHOD StrFOrmat( cFormat ) CLASS Date
 
 Return ( cDate )
 
+/* METHOD: METHOD DToS()
+    Method That Converts Date into String YYYYMMDD
+
+Devuelve:
+    Character
+*/
+method DToS() class Date
+return(DToS(Self))
+
 /* METHOD: StrDay()
     Method That Converts Days into String
 
@@ -383,7 +396,7 @@ function StrYearMonth(dDate)
 
     local cStrYearMonth:=""
 
-    hb_default(@dDate,Ctod("//"))
+    hb_default(@dDate,hb_CToD("//","DDMMYYYY"))
 
     if (ValType(dDate)=="D")
         cStrYearMonth:=Left(DtoS(dDate),6)
@@ -403,6 +416,8 @@ return(MonthSum(Self,nMonth))
 
 function MonthSum(dDate,nMonth)
 
+    local cDate
+    
     local nMonthAux:=Month(dDate)
     local nDayAux:=Day(dDate)
     local nYearAux:=Year(dDate)
@@ -429,11 +444,14 @@ function MonthSum(dDate,nMonth)
             end while
         endif
     endif
-    dDate:=hb_CToD(Day2Str(nDayAux)+"/"+Month2Str(nMonthAux)+"/"+Year2Str(nYearAux),"DDMMYYYY")
+    cDate:=Year2Str(nYearAux)+Month2Str(nMonthAux)+Day2Str(nDayAux)
+    dDate:=SToD(cDate)
     if Empty(dDate)
-        dDate:=hb_CToD(Day2Str(1)+"/"+Month2Str(nMonthAux)+"/"+Year2Str(nYearAux),"DDMMYYYY")
+        cDate:=Year2Str(nYearAux)+Month2Str(nMonthAux)+Day2Str(1)
+        dDate:=SToD(cDate)
         nDayAux:=LastDayOfMonth(dDate)
-        dDate:=hb_CToD(Day2Str(nDayAux)+"/"+Month2Str(nMonthAux)+"/"+Year2Str(nYearAux),"DDMMYYYY")
+        cDate:=Year2Str(nYearAux)+Month2Str(nMonthAux)+Day2Str(nDayAux)
+        dDate:=SToD(cDate)
     endif
 
     return(dDate)
@@ -450,25 +468,30 @@ return(MonthSub(Self,nMonth))
 
 function MonthSub(dDate,nMonth)
 
-    local nMonthAux:=Month(dDate)
-    local nDayAux:=Day(dDate)
-    local nYearAux:=Year(dDate)
+    local cDate
+    
+    local nMonthAux:=dDate:Month()
+    local nDayAux:=dDate:Day()
+    local nYearAux:=dDate:Year()
 
     while (nMonth>=12)
         nMonth-=12
         nYearAux--
     end while
     nMonthAux-=nMonth
-    if (nMonthAux <=0)
+    if (nMonthAux<=0)
         nMonthAux:=(12+nMonthAux)
         nYearAux--
     endif
 
-    dDate:=hb_CToD(Day2Str(nDayAux)+"/"+Month2Str(nMonthAux)+"/"+Year2Str(nYearAux),"DDMMYYYY")
+    cDate:=Year2Str(nYearAux)+Month2Str(nMonthAux)+Day2Str(nDayAux)
+    dDate:=SToD(cDate)
     if Empty(dDate)
-        dDate:=hb_CToD(Day2Str(1)+"/"+Month2Str(nMonthAux)+"/"+Year2Str(nYearAux),"DDMMYYYY")
+        cDate:=Year2Str(nYearAux)+Month2Str(nMonthAux)+Day2Str(1)
+        dDate:=SToD(cDate)
         nDayAux:=LastDayOfMonth(dDate)
-        dDate:=hb_CToD(Day2Str(nDayAux)+"/"+Month2Str(nMonthAux)+"/"+Year2Str(nYearAux),"DDMMYYYY")
+        cDate:=Year2Str(nYearAux)+Month2Str(nMonthAux)+Day2Str(nDayAux)
+        dDate:=SToD(cDate)
     endif
 
     return(dDate)
@@ -485,16 +508,21 @@ return(YearSum(Self,nYear))
 
 function YearSum(dDate,nYear)
 
+    local cDate
+    
     local nMonthAux:=Month(dDate)
     local nDayAux:=Day(dDate)
     local nYearAux:=Year(dDate)
 
     nYearAux+=nYear
-    dDate:=hb_CToD(Day2Str(nDayAux)+"/"+Month2Str(nMonthAux)+"/"+Year2Str(nYearAux),"DDMMYYYY")
+    cDate:=Year2Str(nYearAux)+Month2Str(nMonthAux)+Day2Str(nDayAux)
+    dDate:=SToD(cDate)
     if Empty(dDate)
-        dDate:=hb_CToD(Day2Str(1)+"/"+Month2Str(nMonthAux)+"/"+Year2Str(nYearAux),"DDMMYYYY")
+        cDate:=Year2Str(nYearAux)+Month2Str(nMonthAux)+Day2Str(1)
+        dDate:=SToD(cDate)
         nDayAux:=LastDayOfMonth(dDate)
-        dDate:=hb_CToD(Day2Str(nDayAux)+"/"+Month2Str(nMonthAux)+"/"+Year2Str(nYearAux),"DDMMYYYY")
+        cDate:=Year2Str(nYearAux)+Month2Str(nMonthAux)+Day2Str(nDayAux)
+        dDate:=SToD(cDate)
     endif
 
     return(dDate)
@@ -511,16 +539,21 @@ return(YearSub(Self,nYear))
 
 function YearSub(dDate,nYear)
 
+    local cDate
+    
     local nMonthAux:=Month(dDate)
     local nDayAux:=Day(dDate)
     local nYearAux:=Year(dDate)
 
     nYearAux-=nYear
-    dDate:=hb_CToD(Day2Str(nDayAux)+"/"+Month2Str(nMonthAux)+"/"+Year2Str(nYearAux),"DDMMYYYY")
+    cDate:=Year2Str(nYearAux)+Month2Str(nMonthAux)+Day2Str(nDayAux)
+    dDate:=SToD(cDate)
     if Empty(dDate)
-        dDate:=hb_CToD(Day2Str(1)+"/"+Month2Str(nMonthAux)+"/"+Year2Str(nYearAux),"DDMMYYYY")
+        cDate:=Year2Str(nYearAux)+Month2Str(nMonthAux)+Day2Str(1)
+        dDate:=SToD(cDate)
         nDayAux:=LastDayOfMonth(dDate)
-        dDate:=hb_CToD(Day2Str(nDayAux)+"/"+Month2Str(nMonthAux)+"/"+Year2Str(nYearAux),"DDMMYYYY")
+        cDate:=Year2Str(nYearAux)+Month2Str(nMonthAux)+Day2Str(nDayAux)
+        dDate:=SToD(cDate)
     endif
 
     return(dDate)
@@ -636,14 +669,18 @@ Devuelve:
     hash {"years"=>nYears,"months"=>nMonths,"days"=>nDays}
 */
 method DateDiffYMD(dDate) class Date
+    local hRet
     hb_default(@dDate,Date())
-return(DateDiffYMD(Self,dDate))
+    hRet:=DateDiffYMD(Self,dDate)
+return(hRet)
 
 function DateDiffYMD(dDate1,dDate2)
 
     local nYears
     local nMonths
     local nDays
+    
+    local hRet
 
     nYears:=DateDiffYear(@dDate1,@dDate2)
     nMonths:=DateDiffMonth(dDate1,dDate2)
@@ -674,7 +711,9 @@ function DateDiffYMD(dDate1,dDate2)
         nDays:=DateDiffDay(dDate1,dDate2)
     endif
 
-    return({"years"=>nYears,"months"=>nMonths,"days"=>nDays})
+    hRet:={"years"=>nYears,"months"=>nMonths,"days"=>nDays}
+    
+    return(hRet)
 
 /* METHOD: LastDayOfMonth()
     Médoto returning the last day of the month
@@ -687,6 +726,8 @@ return(LastDayOfMonth(Self))
 
 function LastDayOfMonth(dDate)
 
+    local cDate
+    
     local nMonth
     local nYear
 
@@ -701,7 +742,8 @@ function LastDayOfMonth(dDate)
         nYear++
     endif
 
-    dDate:=hb_CToD("01/"+Month2Str(nMonth)+"/"+Year2Str(nYear),"DDMMYYYY")
+    cDate:=Year2Str(nYear)+Month2Str(nMonth)+"01"
+    dDate:=SToD(cDate)
     dDate-=1
 
     return(Day(dDate))
@@ -717,8 +759,8 @@ return(FirstDateOfMonth(Self))
 
 function FirstDateOfMonth(dDate)
     local cYearMonth:=StrYearMonth(dDate)
-    local cDate:=("01/"+Right(cYearMonth ,2)+"/"+Left(cYearMonth,4))
-return(hb_CToD(cDate,"DDMMYYYY"))
+    local cDate:=Left(cYearMonth,4)+Right(cYearMonth,2)+"01"
+return(SToD(cDate))
 
 /* METHOD: LastDateOfMonth()
     Medoto returning the last date of the month
@@ -730,8 +772,8 @@ method LastDateOfMonth() class Date
 return(LastDateOfMonth(Self))
 
 function LastDateOfMonth(dDate)
-    local cDate:=(Day2Str(LastDayOfMonth(FirstDateOfMonth(dDate)))+"/"+Month2Str(dDate)+"/"+Year2Str(dDate))
-return(hb_CToD(cDate,"DDMMYYYY"))
+    local cDate:=Year2Str(dDate)+Month2Str(dDate)+Day2Str(LastDayOfMonth(FirstDateOfMonth(dDate)))
+return(SToD(cDate))
 
 /* METHOD: FirstDateOfYear()
     Medoto returning the first date of the year
@@ -743,8 +785,8 @@ method FirstDateOfYear() class Date
 return(FirstDateOfYear(Self))
 
 function FirstDateOfYear(dDate)
-    local cDate:=("01/01/"+Year2Str(dDate))
-return(hb_CToD(cDate,"DDMMYYYY"))
+    local cDate:=Year2Str(dDate)+"0101"
+return(SToD(cDate))
 
 /* METHOD: LastDateOfYear()
     Medoto returning the last date of the year
@@ -756,5 +798,5 @@ method LastDateOfYear() class Date
 return(LastDateOfYear(Self))
 
 function LastDateOfYear(dDate)
-    local cDate:=(Day2Str(LastDayOfMonth(FirstDateOfMonth(dDate)))+"/12/"+Year2Str(dDate))
-return(hb_CToD(cDate,"DDMMYYYY"))
+    local cDate:=Year2Str(dDate)+"1231"
+return(SToD(cDate))
