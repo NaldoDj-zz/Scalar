@@ -230,24 +230,33 @@ static function Test_DateDiffYMD()
 
     local hRet
 
-    ? "0d19701215:DateDiffYMD()['years']"+hb_ValToStr(0d19701215:DateDiffYMD()["years"])
-    ? "0d19701215:DateDiffYMD()['months']"+hb_ValToStr(0d19701215:DateDiffYMD()["months"])
-    ? "0d19701215:DateDiffYMD()['days']"+hb_ValToStr(0d19701215:DateDiffYMD()["days"])
+    ? "0d19701215:DateDiffYMD()['years']  : "+hb_ValToStr(0d19701215:DateDiffYMD()["years"])
+    ? "0d19701215:DateDiffYMD()['months'] : "+hb_ValToStr(0d19701215:DateDiffYMD()["months"])
+    ? "0d19701215:DateDiffYMD()['days']   : "+hb_ValToStr(0d19701215:DateDiffYMD()["days"])
+
+    ? "-----------------------------------------------------"
+    ? 'hb_JSonEncode(0d19701215:DateDiffYMD(0d20201215)): '+hb_JSonEncode(0d19701215:DateDiffYMD())
     
     ? "-----------------------------------------------------"
     
-    ? "0d19701215:DateDiffYMD(0d20201215)['years']"+hb_ValToStr(0d19701215:DateDiffYMD(0d20201215)["years"])
-    ? "0d19701215:DateDiffYMD(0d20201215)['months']"+hb_ValToStr(0d19701215:DateDiffYMD(0d20201215)["months"])
-    ? "0d19701215:DateDiffYMD(0d20201215)['days']"+hb_ValToStr(0d19701215:DateDiffYMD(0d20201215)["days"])
+    ? "0d19701215:DateDiffYMD(0d20201215)['years']  : "+hb_ValToStr(0d19701215:DateDiffYMD(0d20201215)["years"])
+    ? "0d19701215:DateDiffYMD(0d20201215)['months'] : "+hb_ValToStr(0d19701215:DateDiffYMD(0d20201215)["months"])
+    ? "0d19701215:DateDiffYMD(0d20201215)['days']   : "+hb_ValToStr(0d19701215:DateDiffYMD(0d20201215)["days"])
     
+    ? "-----------------------------------------------------"
+    ? 'hb_JSonEncode(0d19701215:DateDiffYMD(0d20201215)): '+hb_JSonEncode(0d19701215:DateDiffYMD(0d20201215))
+
     ? "-----------------------------------------------------"
     
     ? "hRet:=0d19701215:DateDiffYMD(0d20201215)"
     
     hRet:=0d19701215:DateDiffYMD(0d20201215)
-    ? 'hRet["years"]:  '+hb_ValToStr(hRet["years"])
+    ? 'hRet["years"] : '+hb_ValToStr(hRet["years"])
     ? 'hRet["months"]: '+hb_ValToStr(hRet["months"])
-    ? 'hRet["days"]:   '+hb_ValToStr(hRet["days"])
+    ? 'hRet["days"]  : '+hb_ValToStr(hRet["days"])
+
+    ? "-----------------------------------------------------"
+    ? 'hb_JSonEncode(hRet): '+hb_JSonEncode(hRet)
 
     ? "-----------------------------------------------------"
     
@@ -256,7 +265,10 @@ static function Test_DateDiffYMD()
     hRet:=0d19701215:DateDiffYMD(0d20201115)
     ? 'hRet["years"] : '+hb_ValToStr(hRet["years"])
     ? 'hRet["months"]: '+hb_ValToStr(hRet["months"])
-    ? 'hRet["days"]:   '+hb_ValToStr(hRet["days"])
+    ? 'hRet["days"]  : '+hb_ValToStr(hRet["days"])
+
+    ? "-----------------------------------------------------"
+    ? 'hb_JSonEncode(hRet): '+hb_JSonEncode(hRet)
 
     ? "-----------------------------------------------------"
 
@@ -265,7 +277,10 @@ static function Test_DateDiffYMD()
     hRet:=0d19701215:DateDiffYMD(0d20201130)
     ? 'hRet["years"] : '+hb_ValToStr(hRet["years"])
     ? 'hRet["months"]: '+hb_ValToStr(hRet["months"])
-    ? 'hRet["days"]:   '+hb_ValToStr(hRet["days"])
+    ? 'hRet["days"]  : '+hb_ValToStr(hRet["days"])
+    
+    ? "-----------------------------------------------------"
+    ? 'hb_JSonEncode(hRet): '+hb_JSonEncode(hRet)
     
     ? "-----------------------------------------------------"
 
@@ -274,6 +289,8 @@ static function Test_DateDiffYMD()
        ? "0d19701215:DateDiffYMD(0d19701215:AddYear("+hb_ntos(nYear)+")): "+hb_ValToStr(0d19701215:DateDiffYMD(0d19701215:AddYear(nYear))["years"])
        ? "0d19701215:DateDiffYMD(0d19701215:AddYear("+hb_ntos(nYear)+")): "+hb_ValToStr(0d19701215:DateDiffYMD(0d19701215:AddYear(nYear))["months"])
        ? "0d19701215:DateDiffYMD(0d19701215:AddYear("+hb_ntos(nYear)+")): "+hb_ValToStr(0d19701215:DateDiffYMD(0d19701215:AddYear(nYear))["days"])
+       ? "-----------------------------------------------------"
+       ? "0d19701215:DateDiffYMD(0d19701215:AddYear("+hb_ntos(nYear)+")): "+hb_JSonEncode(0d19701215:DateDiffYMD(0d19701215:AddYear(nYear)))
        ? "-----------------------------------------------------"
     next nYear
 
